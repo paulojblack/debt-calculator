@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "jsdoc": "node_modules/.bin/jsdoc -r lib/ -d jsdoc/",
+    "jsdoc": "node_modules/.bin/jsdoc -r lib/ -d jsdoc/ & open jsdoc/index.html",
     "dev": "node index.js & nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha test/unit/ & open coverage/lcov-report/index.html "
   },
   "author": "Paulo Black",
   "license": "ISC",
@@ -20,7 +20,9 @@
     "vision": "^4.1.0"
   },
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "jsdoc": "^3.4.1",
+    "mocha": "^3.0.2",
     "nodemon": "^1.10.2",
     "should": "^11.1.0",
     "sinon": "^1.17.5"
