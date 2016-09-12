@@ -14,7 +14,7 @@ describe('Monthly Payment', function(){
             1000,
             10000,
             15000,
-            5000,
+            0,
             10000
         ];
 
@@ -32,11 +32,10 @@ describe('Monthly Payment', function(){
         done();
     });
 
-    it('should call correctly', function(done){
+    it('should get the next months principle', function(done){
 
         should.exist(monthlyPayment.getNextMonthPrincipal());
-        console.log(monthlyPayment.getNextMonthPrincipal());
-        should(monthlyPayment.getNextMonthPrincipal()).be.ok();
+        should(monthlyPayment.getNextMonthPrincipal()).be.eql([1004.17, 10008.33, 15012.5, 0, 9783.33]);
 
         done();
     });
