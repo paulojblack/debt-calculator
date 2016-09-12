@@ -1,7 +1,10 @@
 var should = require('should'),
     DataSet = require('../../lib/private/loan_datasets'),
     _ = require('lodash'),
-    dataset;
+    dataset,
+    principal,
+    interest,
+    payment;
 
 describe('Dataset', function() {
 
@@ -27,12 +30,11 @@ describe('Dataset', function() {
 
         dataSet = new DataSet(principal, interest, payment);
 
-
         done();
     });
 
     it('should get it right', function(done) {
-        should(dataSet.getPaymentPlan()).be.ok();
+        should.exist(dataSet.getPaymentPlan());
         done();
     });
 
