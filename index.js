@@ -1,29 +1,34 @@
-var Hapi = require('hapi');
-var server = new Hapi.Server({debug: {request: ['error']}});
-var LoanCalculator = require('./lib/private/loan_datasets');
+var Hapi = require('hapi'),
+    server = new Hapi.Server({debug: {request: ['error']}}),
+    LoanCalculator = require('./lib/private/loan_datasets'),
+    d3 = require('d3');
 
 server.connection({
   host: '0.0.0.0',
   port: 3000
 });
 
-var principal = [
-    1000,
-    10000,
-    15000,
-    0,
-    10000
+principal = [
+    9794.09,
+    5457.19,
+    7324.94,
+    9737.3,
+    6752.98,
+    8259.64,
+    7120.25
 ];
 
-var interest = [
-    0.05,
-    0.01,
-    0.01,
-    0.15,
-    0.1
+interest = [
+    0.0812,
+    0.07125,
+    0.07125,
+    0.08375,
+    0.0812,
+    0.07125,
+    0.07125
 ];
 
-var payment = 300;
+payment = 800;
 
 myLoan = new LoanCalculator(principal, interest, payment);
 
@@ -34,6 +39,13 @@ server.register(require('inert'), function (err) {
     throw err;
   }
 
+    // server.route({
+    //     method: 'GET',
+    //     path: '/',
+    //     handler: function(req, rep){
+    //         rep(myLoan.getPaymentPlan());
+    //     }
+    // });
     server.route({
         method: 'GET',
         path: '/{param*}',
