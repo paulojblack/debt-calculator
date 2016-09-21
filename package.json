@@ -6,6 +6,7 @@
   "scripts": {
     "jsdoc": "node_modules/.bin/jsdoc -r lib/ -d jsdoc/ & open jsdoc/index.html",
     "dev": "node index.js & nodemon",
+    "lint": "eslint lib",
     "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha test/unit/ & open coverage/lcov-report/index.html "
   },
   "author": "Paulo Black",
@@ -21,6 +22,7 @@
     "vision": "^4.1.0"
   },
   "devDependencies": {
+    "eslint": "^3.5.0",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.1",
     "mocha": "^3.0.2",

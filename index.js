@@ -32,7 +32,7 @@ payment = 800;
 
 myLoan = new LoanCalculator(principal, interest, payment);
 
-console.log(myLoan.getPaymentPlan());
+console.log(myLoan.fullPlan);
 server.register(require('inert'), function (err) {
 
   if (err) {
