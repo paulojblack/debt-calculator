@@ -1,6 +1,6 @@
 var Hapi = require('hapi'),
     server = new Hapi.Server({debug: {request: ['error']}}),
-    LoanCalculator = require('./lib/private/loan_datasets'),
+    LoanCalculator = require('./lib/loan_builder/loan_datasets'),
     d3 = require('d3');
 
 server.connection({
@@ -32,31 +32,31 @@ payment = 800;
 
 myLoan = new LoanCalculator(principal, interest, payment);
 
-
+console.log(myLoan.getPaymentPlan());
 server.register(require('inert'), function (err) {
 
   if (err) {
     throw err;
   }
 
-    // server.route({
-    //     method: 'GET',
-    //     path: '/',
-    //     handler: function(req, rep){
-    //         rep(myLoan.getPaymentPlan());
-    //     }
-    // });
     server.route({
         method: 'GET',
-        path: '/{param*}',
-        handler: {
-            directory: {
-                path: '.',
-                redirectToSlash: true,
-                index: true
-            }
+        path: '/',
+        handler: function(req, rep){
+            rep(myLoan.getPaymentPlan());
         }
     });
+    // server.route({
+    //     method: 'GET',
+    //     path: '/{param*}',
+    //     handler: {
+    //         directory: {
+    //             path: '.',
+    //             redirectToSlash: true,
+    //             index: true
+    //         }
+    //     }
+    // });
 });
 
 server.start(function() {
