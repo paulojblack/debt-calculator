@@ -8,13 +8,13 @@ server.connection({
 });
 
 var principal = [
-    9794.09,
-    5457.19,
-    7324.94,
-    9737.3,
-    6752.98,
-    8259.64,
-    7120.25
+    9000.09,
+    5000.19,
+    7000.94,
+    4000.3,
+    1000.98,
+    8000.64,
+    7000.25
 ];
 
 var interest = [
@@ -27,7 +27,7 @@ var interest = [
     0.07125
 ];
 
-var payment = 800;
+var payment = 300;
 
 var myLoan = new LoanCalculator(principal, interest, payment);
 
@@ -38,24 +38,24 @@ server.register(require('inert'), function (err) {
     throw err;
   }
 
-    // server.route({
-    //     method: 'GET',
-    //     path: '/',
-    //     handler: function(req, rep){
-    //         rep(myLoan.getPaymentPlan());
-    //     }
-    // });
     server.route({
         method: 'GET',
-        path: '/{param*}',
-        handler: {
-            directory: {
-                path: '.',
-                redirectToSlash: true,
-                index: true
-            }
+        path: '/',
+        handler: function(req, rep){
+            rep(myLoan.getPaymentPlan());
         }
     });
+    // server.route({
+    //     method: 'GET',
+    //     path: '/{param*}',
+    //     handler: {
+    //         directory: {
+    //             path: '.',
+    //             redirectToSlash: true,
+    //             index: true
+    //         }
+    //     }
+    // });
 });
 
 server.start(function() {
