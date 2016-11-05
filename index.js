@@ -31,7 +31,6 @@ var payment = 300;
 
 var myLoan = new LoanCalculator(principal, interest, payment);
 
-console.log(myLoan.fullPlan);
 server.register(require('inert'), function (err) {
 
   if (err) {
