@@ -12,21 +12,13 @@
   "author": "Paulo Black",
   "license": "ISC",
   "dependencies": {
-    "d3": "^4.2.2",
-    "hapi": "^15.0.3",
-    "inert": "^4.0.2",
     "joi": "^9.0.4",
-    "lodash": "^4.15.0",
-    "lout": "^9.1.0",
-    "moment": "^2.15.0",
-    "vision": "^4.1.0"
+    "lodash": "^4.15.0"
   },
   "devDependencies": {
-    "eslint": "^3.5.0",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.1",
     "mocha": "^3.0.2",
-    "nodemon": "^1.10.2",
     "should": "^11.1.0",
     "sinon": "^1.17.5"
   }
